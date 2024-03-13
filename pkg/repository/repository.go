@@ -8,6 +8,7 @@ import (
 type Authorization interface {
 	CreateUser(user todo.User) (int, error)
 	GetUser(username, password string) (todo.User, error)
+	GetNames() ([]string, error)
 }
 
 type TodoList interface {
@@ -24,6 +25,15 @@ type TodoItem interface {
 	GetById(userId, itemId int) (todo.TodoItem, error)
 	Delete(userId, listId int) error
 	Update(userId, itemId int, input todo.UpdateItemInput) error
+}
+
+type Status interface {
+	Create(description string) (int, error)
+	GetAll() ([]Status, error)
+	Delete(statusId int) error
+	GetUsersStatuses() ([][]string, error)
+	SetStatus(userId int, statusId int) error
+	DropStatus(userId int) error
 }
 
 type Repository struct {

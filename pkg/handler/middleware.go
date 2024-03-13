@@ -13,6 +13,25 @@ const (
 )
 
 func (h *Handler) userIdentity(c *gin.Context) {
+	// Read the JWT token from the cookie
+	//!!!!!!!
+	cookies := c.Request.Cookies()
+	for _, cookie := range cookies {
+		if cookie.Name == "jwt" {
+			// Use the token from the cookie
+			token := cookie.Value
+			userId, err := h.services.Authorization.ParseToken(token)
+			if err != nil {
+				newErrorResponse(c, http.StatusUnauthorized, err.Error())
+				return
+			}
+			c.Set(userCtx, userId)
+			return
+		}
+	}
+	//!!!!!!!!!
+	// If we reach here, the JWT token was not found in the cookie, so we fall back to the Authorization header
+
 	header := c.GetHeader(authorizationHeader)
 	if header == "" {
 		newErrorResponse(c, http.StatusUnauthorized, "empty auth header")

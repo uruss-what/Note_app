@@ -7,11 +7,16 @@ import (
 )
 
 const (
-	usersTable      = "users"
-	todoListsTable  = "todo_lists"
-	usersListsTable = "users_lists"
-	todoItemsTable  = "todo_items"
-	listsItemsTable = "lists_items"
+	usersTable         = "users"
+	todoListsTable     = "todo_lists"
+	usersListsTable    = "users_lists"
+	todoItemsTable     = "todo_items"
+	listsItemsTable    = "lists_items"
+	rolesTable         = "roles"
+	usersRolesTable    = "users_roles"
+	statusesTable      = "statuses"
+	usersStatusesTable = "users_statuses"
+	commentsTable      = "comments"
 )
 
 type Config struct {

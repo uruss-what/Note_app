@@ -74,3 +74,18 @@ func generatePasswordHash(password string) string {
 	hash.Write([]byte(password))
 	return fmt.Sprintf("%x", hash.Sum([]byte(salt)))
 }
+func (s *AuthService) GetName(username, password string) (string, error) {
+	user, err := s.repo.GetUser(username, generatePasswordHash(password))
+	if err != nil {
+		return "", err
+	}
+	return user.Name, nil
+}
+func (s *AuthService) GetAllNames() ([]string, error) {
+	names, err := s.repo.GetNames()
+	if err != nil {
+		fmt.Println("Error getting names: ", err)
+		return nil, err
+	}
+	return names, nil
+}

@@ -26,8 +26,27 @@ func (r *AuthPostgres) CreateUser(user todo.User) (int, error) {
 
 func (r *AuthPostgres) GetUser(username, password string) (todo.User, error) {
 	var user todo.User
-	query := fmt.Sprintf("SELECT id FROM %s WHERE username=$1 AND password_hash=$2", usersTable)
+	query := fmt.Sprintf("SELECT id,name FROM %s WHERE username=$1 AND password_hash=$2", usersTable)
 	err := r.db.Get(&user, query, username, password)
 
 	return user, err
+}
+func (r *AuthPostgres) GetNames() ([]string, error) {
+	var names []string
+	query := fmt.Sprintf("SELECT name FROM %s", usersTable)
+	rows, err := r.db.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var name string
+		if err := rows.Scan(&name); err != nil {
+			return nil, err
+		}
+		names = append(names, name)
+	}
+	fmt.Println(names)
+	return names, rows.Err()
 }

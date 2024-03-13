@@ -7,8 +7,6 @@ import (
 	"ToDoApp/pkg/service"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
-	"html/template"
-	"net/http"
 	"os"
 
 	_ "github.com/lib/pq"
@@ -16,30 +14,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func home_page(w http.ResponseWriter, r *http.Request) {
-
-	tmpl, _ := template.ParseFiles("templates/home_page.html")
-	tmpl.Execute(w, r)
-}
-func auth_page(w http.ResponseWriter, r *http.Request) {
-	tmpl, _ := template.ParseFiles("templates/auth_page.html")
-	tmpl.Execute(w, r)
-}
-func contacts(w http.ResponseWriter, r *http.Request) {
-	tmpl, _ := template.ParseFiles("templates/contacts.html")
-	tmpl.Execute(w, r)
-}
-
-func HandleRequest() {
-	http.HandleFunc("/", home_page)
-	http.HandleFunc("/auth/", auth_page)
-	http.HandleFunc("/contacts/", contacts)
-	http.ListenAndServe(":2023", nil)
-}
-
 func main() {
-
-	HandleRequest()
 
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 	if err := initConfig(); err != nil {
