@@ -5,7 +5,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #afd593;
+            background-color: #4355ab;
             padding: 200px;
             max-height: 100vh;
             max-width: 100vw;
@@ -15,7 +15,7 @@
         .container {
             width: 800px;
             margin: -150px auto;
-            background-color: #d0e1c2;
+            background-color: #cbccc9;
             border-radius: 5px;
             padding: 200px;
 
@@ -35,7 +35,7 @@
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #4355ab;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -44,7 +44,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #4355ab;
         }
 
         h1 {
@@ -196,7 +196,7 @@
             }
         }
         .my-list, .my-profile, .users {
-            background-color: #4CAF50; /* Цвет фона */
+            background-color: #7c4cd2; /* Цвет фона */
             color: white; /* Цвет текста */
             padding: 10px 20px; /* Отступы вокруг текста */
             border: none; /* Убираем границу */
@@ -222,11 +222,11 @@
     <li></li>
 </ul>
 
-<h1>Добро пожаловать, {{.name}}!</h1>
+<h1>Welcome home, {{.name}}!</h1>
 <div class="container">
-    <a href="/api/lists/"><button class="my-list">Мои списки</button></a>
-    <button class="my-profile">Мой профиль</button>
-    <button class="users">Пользователи сайта</button>
+    <a href="/api/lists/"><button class="my-list">My notes</button></a>
+    <button class="my-profile">Profile</button>
+    <a href="/api/users/"><button class="users">All the users</button></a>
 </div>
 <script>
     //ID

@@ -1,397 +1,361 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>Notes</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Iconscout Link For Icons -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <title>Sign In</title>
     <style>
-        /* Import Google Font - Poppins */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        body{
-            background: #88ABFF;
-        }
-        ::selection{
-            color: #fff;
-            background: #618cf8;
-        }
-        .wrapper{
-            margin: 50px;
-            display: grid;
-            gap: 25px;
-            grid-template-columns: repeat(auto-fill, 265px);
-        }
-        .wrapper li{
-            height: 250px;
-            list-style: none;
-            border-radius: 5px;
-            padding: 15px 20px 20px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        .add-box, .icon, .bottom-content,
-        .popup, header, .settings .menu li{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .add-box{
-            cursor: pointer;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .add-box .icon{
-            height: 78px;
-            width: 78px;
-            color: #88ABFF;
-            font-size: 40px;
-            border-radius: 50%;
-            justify-content: center;
-            border: 2px dashed #88ABFF;
-        }
-        .add-box p{
-            color: #88ABFF;
-            font-weight: 500;
-            margin-top: 20px;
-        }
-        .note{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .note .details{
-            max-height: 165px;
-            overflow-y: auto;
-        }
-        .note .details::-webkit-scrollbar,
-        .popup textarea::-webkit-scrollbar{
-            width: 0;
-        }
-        .note .details:hover::-webkit-scrollbar,
-        .popup textarea:hover::-webkit-scrollbar{
-            width: 5px;
-        }
-        .note .details:hover::-webkit-scrollbar-track,
-        .popup textarea:hover::-webkit-scrollbar-track{
-            background: #f1f1f1;
-            border-radius: 25px;
-        }
-        .note .details:hover::-webkit-scrollbar-thumb,
-        .popup textarea:hover::-webkit-scrollbar-thumb{
-            background: #e6e6e6;
-            border-radius: 25px;
-        }
-        .note p{
-            font-size: 22px;
-            font-weight: 500;
-        }
-        .note span{
-            display: block;
-            color: #575757;
-            font-size: 16px;
-            margin-top: 5px;
-        }
-        .note .bottom-content{
-            padding-top: 10px;
-            border-top: 1px solid #ccc;
-        }
-        .bottom-content span{
-            color: #6D6D6D;
-            font-size: 14px;
-        }
-        .bottom-content .settings{
-            position: relative;
-        }
-        .bottom-content .settings i{
-            color: #6D6D6D;
-            cursor: pointer;
-            font-size: 15px;
-        }
-        .settings .menu{
-            z-index: 1;
-            bottom: 0;
-            right: -5px;
-            padding: 5px 0;
-            background: #fff;
-            position: absolute;
-            border-radius: 4px;
-            transform: scale(0);
-            transform-origin: bottom right;
-            box-shadow: 0 0 6px rgba(0,0,0,0.15);
-            transition: transform 0.2s ease;
-        }
-        .settings.show .menu{
-            transform: scale(1);
-        }
-        .settings .menu li{
-            height: 25px;
-            font-size: 16px;
-            margin-bottom: 2px;
-            padding: 17px 15px;
-            cursor: pointer;
-            box-shadow: none;
-            border-radius: 0;
-            justify-content: flex-start;
-        }
-        .menu li:last-child{
-            margin-bottom: 0;
-        }
-        .menu li:hover{
-            background: #f5f5f5;
-        }
-        .menu li i{
-            padding-right: 8px;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4355ab;
+            padding: 200px;
+            max-height: 100vh;
+            max-width: 100vw;
+            overflow: auto;
         }
 
-        .popup-box{
-            position: fixed;
+        .container {
+            width: 800px;
+            margin: -150px auto;
+            background-color: #cbccc9;
+            border-radius: 5px;
+            padding: 200px;
+
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #d2d2d2;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4355ab;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4355ab;
+        }
+
+        h1 {
+            color: #3b3085;
+            position: relative;
+            bottom: 20px;
+            left: 50px;
+            font-size: 40px;
+            text-shadow: 1px 1px 1px #8c988c;
+        }
+        .colorlib-bubbles {
+            position: absolute;
             top: 0;
             left: 0;
-            z-index: 2;
+            width: 100%;
             height: 100%;
-            width: 100%;
-            background: rgba(0,0,0,0.4);
-        }
-        .popup-box .popup{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 3;
-            width: 100%;
-            max-width: 400px;
-            justify-content: center;
-            transform: translate(-50%, -50%) scale(0.95);
-        }
-        .popup-box, .popup{
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.25s ease;
-        }
-        .popup-box.show, .popup-box.show .popup{
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .popup-box.show .popup{
-            transform: translate(-50%, -50%) scale(1);
-        }
-        .popup .content{
-            border-radius: 5px;
-            background: #fff;
-            width: calc(100% - 15px);
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-        .content header{
-            padding: 15px 25px;
-            border-bottom: 1px solid #ccc;
-        }
-        .content header p{
-            font-size: 20px;
-            font-weight: 500;
-        }
-        .content header i{
-            color: #8b8989;
-            cursor: pointer;
-            font-size: 23px;
-        }
-        .content form{
-            margin: 15px 25px 35px;
-        }
-        .content form .row{
-            margin-bottom: 20px;
-        }
-        form .row label{
-            font-size: 18px;
-            display: block;
-            margin-bottom: 6px;
-        }
-        form :where(input, textarea){
-            height: 50px;
-            width: 100%;
-            outline: none;
-            font-size: 17px;
-            padding: 0 15px;
-            border-radius: 4px;
-            border: 1px solid #999;
-        }
-        form :where(input, textarea):focus{
-            box-shadow: 0 2px 4px rgba(0,0,0,0.11);
-        }
-        form .row textarea{
-            height: 150px;
-            resize: none;
-            padding: 8px 15px;
-        }
-        form button{
-            width: 100%;
-            height: 50px;
-            color: #fff;
-            outline: none;
-            border: none;
-            cursor: pointer;
-            font-size: 17px;
-            border-radius: 4px;
-            background: #6A93F8;
+            z-index: -1;
         }
 
-        @media (max-width: 660px){
-            .wrapper{
-                margin: 15px;
-                gap: 15px;
-                grid-template-columns: repeat(auto-fill, 100%);
+        .colorlib-bubbles li {
+            position: absolute;
+            list-style: none;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.16);
+            bottom: -160px;
+            -webkit-animation: square 20s infinite;
+            -moz-animation: square 250s infinite;
+            -o-animation: square 20s infinite;
+            -ms-animation: square 20s infinite;
+            animation: square 20s infinite;
+            -webkit-transition-timing-function: linear;
+            -moz-transition-timing-function: linear;
+            -o-transition-timing-function: linear;
+            -ms-transition-timing-function: linear;
+            transition-timing-function: linear;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -o-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .colorlib-bubbles li:nth-child(1) {
+            left: 10%;
+        }
+
+        .colorlib-bubbles li:nth-child(2) {
+            left: 20%;
+            width: 80px;
+            height: 80px;
+            -webkit-animation-delay: 2s;
+            -moz-animation-delay: 2s;
+            -o-animation-delay: 2s;
+            -ms-animation-delay: 2s;
+            animation-delay: 2s;
+            -webkit-animation-duration: 17s;
+            -moz-animation-duration: 17s;
+            -o-animation-duration: 17s;
+            animation-duration: 17s;
+        }
+
+        .colorlib-bubbles li:nth-child(3) {
+            left: 25%;
+            -webkit-animation-delay: 4s;
+            -moz-animation-delay: 4s;
+            -o-animation-delay: 4s;
+            -ms-animation-delay: 4s;
+            animation-delay: 4s;
+        }
+
+        .colorlib-bubbles li:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            -webkit-animation-duration: 22s;
+            -moz-animation-duration: 22s;
+            -o-animation-duration: 22s;
+            -ms-animation-duration: 22s;
+            animation-duration: 22s;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .colorlib-bubbles li:nth-child(5) {
+            left: 70%;
+        }
+
+        .colorlib-bubbles li:nth-child(6) {
+            left: 80%;
+            width: 120px;
+            height: 120px;
+            -webkit-animation-delay: 3s;
+            -moz-animation-delay: 3s;
+            -o-animation-delay: 3s;
+            -ms-animation-delay: 3s;
+            animation-delay: 3s;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .colorlib-bubbles li:nth-child(7) {
+            left: 32%;
+            width: 160px;
+            height: 160px;
+            -webkit-animation-delay: 7s;
+            -moz-animation-delay: 7s;
+            -o-animation-delay: 7s;
+            -ms-animation-delay: 7s;
+            animation-delay: 7s;
+        }
+
+        .colorlib-bubbles li:nth-child(8) {
+            left: 55%;
+            width: 20px;
+            height: 20px;
+            -webkit-animation-delay: 15s;
+            -moz-animation-delay: 15s;
+            animation-delay: 15s;
+            -webkit-animation-duration: 40s;
+            -moz-animation-duration: 40s;
+            animation-duration: 40s;
+        }
+
+
+
+        .colorlib-bubbles li:nth-child(9) {
+            left: 25%;
+            width: 10px;
+            height: 10px;
+            -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+            -webkit-animation-duration: 40s;
+            animation-duration: 40s;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .colorlib-bubbles li:nth-child(10) {
+            left: 90%;
+            width: 160px;
+            height: 160px;
+            -webkit-animation-delay: 11s;
+            animation-delay: 11s;
+        }
+        @keyframes square {
+            0% {
+                transform: translateY(0);
             }
-            .popup-box .popup{
-                max-width: calc(100% - 15px);
+
+            100% {
+                transform: translateY(-500px) rotate(1200deg);
             }
-            .bottom-content .settings i{
-                font-size: 17px;
-            }
+        }
+        .my-list, .my-profile, .users {
+            background-color: #7c4cd2; /* Цвет фона */
+            color: white; /* Цвет текста */
+            padding: 10px 20px; /* Отступы вокруг текста */
+            border: none; /* Убираем границу */
+            border-radius: 5px; /* Скругление углов */
+            cursor: pointer; /* Изменение курсора при наведении */
+            font-size: 30px; /* Размер шрифта */
+            float: left;
+            margin-right: 10px;
+        }
+        #editFormContainer {
+            display: none;
         }
     </style>
-
 </head>
 <body>
-<div class="popup-box">
-    <div class="popup">
-        <div class="content">
-            <header>
-                <p></p>
-                <i class="uil uil-times"></i>
-            </header>
-            <form action="#">
-                <div class="row title">
-                    <label>Title</label>
-                    <input type="text" spellcheck="false">
-                </div>
-                <div class="row description">
-                    <label>Description</label>
-                    <textarea spellcheck="false"></textarea>
-                </div>
-                <button></button>
+<ul class="colorlib-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<h1>Remember deadline</h1>
+<div class="container">
+    <form id="createListForm">
+        <input type="text" id="title" name="title" placeholder="Title" required>
+        <input type="text" id="description" name="description" placeholder="Take a note..." required>
+        <button class="create-lists" type="submit">Save</button>
+    </form>
+    <ul>
+
+        {{range .Lists}}
+        <li>
+            <h2>{{.Title}}</h2>
+            <p>{{.Description}}</p>
+
+            <svg class="delete-icon" data-id="{{.Id}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z">
+                </path>
+                <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
+            </svg>
+
+            <svg class="editIcon" data-id1="{{.Id}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z">
+            </path>
+            </svg>
+
+        </li>
+        <div id="editFormContainer">
+            <form id="editForm">
+                <input type="text" id="title1" name="title" placeholder="Title" required>
+                <input type="text" id="description1" name="description" placeholder="Edit note..." required></input>
+                <button type="submit">Update</button>
             </form>
+            <!-- Форма редактирования будет динамически добавляться сюда -->
         </div>
-    </div>
+        {{end}}
+    </ul>
 </div>
-<div class="wrapper">
-    <li class="add-box">
-        <div class="icon"><i class="uil uil-plus"></i></div>
-        <p>Add new note</p>
-    </li>
-</div>
-
 <script>
-    const addBox = document.querySelector(".add-box"),
-        popupBox = document.querySelector(".popup-box"),
-        popupTitle = popupBox.querySelector("header p"),
-        closeIcon = popupBox.querySelector("header i"),
-        titleTag = popupBox.querySelector("input"),
-        descTag = popupBox.querySelector("textarea"),
-        addBtn = popupBox.querySelector("button");
 
-    const months = ["January", "February", "March", "April", "May", "June", "July",
-        "August", "September", "October", "November", "December"];
-    const notes = JSON.parse(localStorage.getItem("notes") || "[]");
-    let isUpdate = false, updateId;
-
-    addBox.addEventListener("click", () => {
-        popupTitle.innerText = "Add a new Note";
-        addBtn.innerText = "Add Note";
-        popupBox.classList.add("show");
-        document.querySelector("body").style.overflow = "hidden";
-        if(window.innerWidth > 660) titleTag.focus();
+    document.addEventListener('DOMContentLoaded', function() {
+        var deleteIcons = document.querySelectorAll('.delete-icon');
+        deleteIcons.forEach(function(icon) {
+            icon.addEventListener('click', function(event) {
+                var listId = event.target.getAttribute('data-id');
+                fetch('/api/lists/' + listId, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(function(response) {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        // Handle successful deletion, e.g., remove the list item from the UI
+                        console.log('List deleted successfully');
+                    })
+                    .catch(function(error) {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+            });
+        });
     });
 
-    closeIcon.addEventListener("click", () => {
-        isUpdate = false;
-        titleTag.value = descTag.value = "";
-        popupBox.classList.remove("show");
-        document.querySelector("body").style.overflow = "auto";
+    document.getElementById('createListForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+
+        fetch('/api/lists/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: title,
+                description: description,
+            }),
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     });
 
-    function showNotes() {
-        if(!notes) return;
-        document.querySelectorAll(".note").forEach(li => li.remove());
-        notes.forEach((note, id) => {
-            let filterDesc = note.description.replaceAll("\n", '<br/>');
-            let liTag = `<li class="note">
-                        <div class="details">
-                            <p>${note.title}</p>
-                            <span>${filterDesc}</span>
-                        </div>
-                        <div class="bottom-content">
-                            <span>${note.date}</span>
-                            <div class="settings">
-                                <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
-                                <ul class="menu">
-                                    <li onclick="updateNote(${id}, '${note.title}', '${filterDesc}')"><i class="uil uil-pen"></i>Edit</li>
-                                    <li onclick="deleteNote(${id})"><i class="uil uil-trash"></i>Delete</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>`;
-            addBox.insertAdjacentHTML("afterend", liTag);
+    document.querySelectorAll('.editIcon').forEach(icon => {
+        icon.addEventListener('click', function() {
+            const listId = this.getAttribute('data-id1');
+            const form = document.getElementById('editForm');
+            document.getElementById('editFormContainer').innerHTML = '';
+            document.getElementById('editFormContainer').appendChild(form);
+            document.getElementById('editFormContainer').style.display = 'block';
+
+            document.getElementById('editFormContainer').addEventListener('submit', function(event) {
+                event.preventDefault();
+            const title = document.getElementById('title1').value;
+            const description = document.getElementById('description1').value;
+            fetch('/api/lists/' + listId, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: title,
+                    description: description,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         });
-    }
-    showNotes();
-
-    function showMenu(elem) {
-        elem.parentElement.classList.add("show");
-        document.addEventListener("click", e => {
-            if(e.target.tagName != "I" || e.target != elem) {
-                elem.parentElement.classList.remove("show");
-            }
         });
-    }
 
-    function deleteNote(noteId) {
-        let confirmDel = confirm("Are you sure you want to delete this note?");
-        if(!confirmDel) return;
-        notes.splice(noteId, 1);
-        localStorage.setItem("notes", JSON.stringify(notes));
-        showNotes();
-    }
+    });
 
-    function updateNote(noteId, title, filterDesc) {
-        let description = filterDesc.replaceAll('<br/>', '\r\n');
-        updateId = noteId;
-        isUpdate = true;
-        addBox.click();
-        titleTag.value = title;
-        descTag.value = description;
-        popupTitle.innerText = "Update a Note";
-        addBtn.innerText = "Update Note";
-    }
-
-    addBtn.addEventListener("click", e => {
-        e.preventDefault();
-        let title = titleTag.value.trim(),
-            description = descTag.value.trim();
-
-        if(title || description) {
-            let currentDate = new Date(),
-                month = months[currentDate.getMonth()],
-                day = currentDate.getDate(),
-                year = currentDate.getFullYear();
-
-            let noteInfo = {title, description, date: `${month} ${day}, ${year}`}
-            if(!isUpdate) {
-                notes.push(noteInfo);
-            } else {
-                isUpdate = false;
-                notes[updateId] = noteInfo;
-            }
-            localStorage.setItem("notes", JSON.stringify(notes));
-            showNotes();
-            closeIcon.click();
-        }
+    //ID
+    var userId = localStorage.getItem('userId');
+    var listId = localStorage.getItem('listId');
+    document.querySelector('.my-list').addEventListener('click', function() {
+        window.location.href = 'http://localhost:8000/api/lists';
+    });
+    document.querySelector('.create-lists').addEventListener('click', function() {
+        window.location.href = 'http://localhost:8000/api/lists/' + listId;
+    });
+    document.querySelector('.users').addEventListener('click', function() {
+        window.location.href = 'http://localhost:8000/api/users';
     });
 </script>
 
