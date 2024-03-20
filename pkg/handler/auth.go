@@ -12,6 +12,7 @@ var store = sessions.NewCookieStore([]byte("your-secret-key"))
 func (h *Handler) signUp(c *gin.Context) {
 	var input todo.User
 
+	//метод контекста чтоб парсить значения из json в поля с аналогичными тегами
 	if err := c.Bind(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return

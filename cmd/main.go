@@ -15,12 +15,13 @@ import (
 )
 
 func main() {
-
+	//сразу храним логи в json формате
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 	if err := initConfig(); err != nil {
 		logrus.Fatalf("error initializing configs: %s", err.Error())
 	}
 
+	//передали параметр из окружения(пароли пользователей) в конфиг
 	if err := godotenv.Load(); err != nil {
 		logrus.Fatalf("error loading env variables: %s", err.Error())
 	}
@@ -37,10 +38,10 @@ func main() {
 	if err != nil {
 		logrus.Fatalf("failed to initialize db: %s", err.Error())
 	}
-
-	repos := repository.NewRepository(db)
-	services := service.NewService(repos)
-	handlers := handler.NewHandler(services)
+	//конструктор
+	repos := repository.NewRepository(db)    //зависимость от бд
+	services := service.NewService(repos)    //зависимость сервиса от репозитория
+	handlers := handler.NewHandler(services) //зависимость запросов от сервиса
 
 	srv := new(todo.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {

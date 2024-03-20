@@ -15,7 +15,7 @@
         .container {
             width: 800px;
             margin: -150px auto;
-            background-color: #cbccc9;
+            background-color: #ffffff;
             border-radius: 5px;
             padding: 200px;
 
@@ -211,6 +211,54 @@
         #editFormContainer {
             display: none;
         }
+
+        .markers {
+            margin: 0 0 20px 24px;
+            padding: 0;
+            list-style-type: "⚡ ";
+        }
+        .markers li {
+            margin: 7px 0;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 0 20px;
+            margin: 0 15px 15px 0;
+            outline: none;
+            border: none;
+            border-radius: 4px;
+            height: 32px;
+            line-height: 32px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3775dd;
+            box-shadow: 0 2px #21487f;
+            cursor: pointer;
+            user-select: none;
+            appearance: none;
+            touch-action: manipulation;
+            vertical-align: top;
+        }
+        .btn:hover {
+            background-color: #002fed;
+        }
+        .btn:active {
+            background-color: #2f599e !important;
+        }
+        .btn:focus-visible {
+            box-shadow: 0 0 0 3px lightskyblue;
+        }
+        .btn:disabled {
+            background-color: #6c87b5;
+            pointer-events: none;
+        }
+
+
     </style>
 </head>
 <body>
@@ -232,14 +280,15 @@
     <form id="createListForm">
         <input type="text" id="title" name="title" placeholder="Title" required>
         <input type="text" id="description" name="description" placeholder="Take a note..." required>
-        <button class="create-lists" type="submit">Save</button>
+        <button class="btn" type="submit">Save</button>
     </form>
-    <ul>
+    <ul class="markers">
 
         {{range .Lists}}
         <li>
             <h2>{{.Title}}</h2>
             <p>{{.Description}}</p>
+
 
             <svg class="delete-icon" data-id="{{.Id}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z">
@@ -252,16 +301,17 @@
             </path>
             </svg>
 
-        </li>
         <div id="editFormContainer">
             <form id="editForm">
                 <input type="text" id="title1" name="title" placeholder="Title" required>
                 <input type="text" id="description1" name="description" placeholder="Edit note..." required></input>
-                <button type="submit">Update</button>
+                <button class="btn" type="submit">Update</button>
             </form>
             <!-- Форма редактирования будет динамически добавляться сюда -->
         </div>
-        {{end}}
+
+        </li>
+        {{ end }}
     </ul>
 </div>
 <script>
@@ -346,17 +396,7 @@
     });
 
     //ID
-    var userId = localStorage.getItem('userId');
-    var listId = localStorage.getItem('listId');
-    document.querySelector('.my-list').addEventListener('click', function() {
-        window.location.href = 'http://localhost:8000/api/lists';
-    });
-    document.querySelector('.create-lists').addEventListener('click', function() {
-        window.location.href = 'http://localhost:8000/api/lists/' + listId;
-    });
-    document.querySelector('.users').addEventListener('click', function() {
-        window.location.href = 'http://localhost:8000/api/users';
-    });
+
 </script>
 
 </body>

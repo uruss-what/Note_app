@@ -45,17 +45,30 @@ func (h *Handler) listsPage(c *gin.Context) {
 		return
 	}
 
+	type ListsPageData struct {
+		Lists []todo.TodoList
+		Items []todo.TodoItem
+	}
+
 	lists, err := h.services.TodoList.GetAll(userId)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	type ListsPageData struct {
-		Lists []todo.TodoList // Assuming List is the type of your lists
+
+	var allItems []todo.TodoItem
+	for _, list := range lists {
+		items, err := h.services.TodoItem.GetAll(userId, list.Id)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		allItems = append(allItems, items...)
 	}
 
 	data := ListsPageData{
 		Lists: lists,
+		Items: allItems,
 	}
 
 	err = tmpl.Execute(c.Writer, data)
