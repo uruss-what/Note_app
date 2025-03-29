@@ -1,4 +1,5 @@
 just for test, rest api, postgresql
+app functionality:
 
 ![image](https://github.com/user-attachments/assets/5b791bdc-326f-40f6-bcf1-f77dda430388)
 
